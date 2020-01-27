@@ -44,6 +44,7 @@ public class FileList extends HttpServlet {
 
             FileAccess fa = new FileAccess_Service().getFileAccessPort();
             List<FileListEntry> files = fa.getFileList(null);
+            String sessionId = null;
 //            head
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -60,6 +61,7 @@ public class FileList extends HttpServlet {
 
                 out.println("<a class='nav-link' href='logout'>Wyloguj</a>");
                 out.println("<span class='nav-link'> | " + usb.getName() + "</span>");
+                sessionId = usb.getSessionId();
 
             } else {
                 out.println("<a class='nav-link' href='login.jsp'>Zaloguj</a>");
@@ -67,12 +69,12 @@ public class FileList extends HttpServlet {
             out.println("</nav>");
 
 //        upload
-            if (true) {
+            if (sessionId != null) {
 
                 out.println("<section id='upload-container'>");
                 out.println("<h1>Przesyłanie</h1>");
                 out.println("<form method='post' action='Upload' enctype='multipart/form-data'>");
-                out.println("<input type='hidden' name='userid' value='" + request.getSession().getAttribute("uniqueSessionID") + "'/>");
+                out.println("<input type='hidden' name='userid' value='" + sessionId + "'/>");
                 out.println("<label for='desc'>Opis<br/></label>");
                 out.println("<textarea required name='desc' name='id'></textarea><br/>");
                 out.println("<label for='file'>Plik<br/></label>");
@@ -101,11 +103,13 @@ public class FileList extends HttpServlet {
                 out.println("<summary>Opis</summary>");
 //            action
                 out.println("<form method='post' action=''>");
-                out.println("<input type='hidden' name='hidden' value='Testźż'/>");
+                out.println("<input type='hidden' name='hidden' value='Testźż'/>"); //TODO remove + chech 
                 out.println("<input type='hidden' name='file' value='" + f.getId() + "'/>");
-                out.println("<input type='hidden' name='userid' value='" + request.getSession().getAttribute("uniqueSessionID") + "'/>");
+                out.println("<input type='hidden' name='userid' value='" + sessionId + "'/>");
                 out.println("<input type='submit' name='action' value='Pobierz'/>");
-                out.println("<input type='submit' name='action' value='Usuń'/>");
+                if (sessionId != null) {
+                    out.println("<input type='submit' name='action' value='Usuń'/>");
+                }
                 out.println("</form>");
 //                description
                 out.println("<p>");

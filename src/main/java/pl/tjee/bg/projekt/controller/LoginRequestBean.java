@@ -5,6 +5,9 @@
  */
 package pl.tjee.bg.projekt.controller;
 
+import pl.tjee.bg.projekt.controller.account.AccountAccess;
+import pl.tjee.bg.projekt.controller.account.AccountAccess_Service;
+
 /**
  *
  * @author Bartem
@@ -14,7 +17,7 @@ public class LoginRequestBean {
     String name;
     String password;
     String id = null;
-    String message = null;
+    String message = "";
 
     public String getName() {
         return name;
@@ -35,7 +38,11 @@ public class LoginRequestBean {
     public boolean getStatus() {
         System.out.println("log: " + name);
         System.out.println("log: " + password);
-        return true;
+        
+        AccountAccess aa = new AccountAccess_Service().getAccountAccessPort();
+        this.id = aa.login(name, password);
+
+        return this.id != null;
     }
 
     public String getMessage() {

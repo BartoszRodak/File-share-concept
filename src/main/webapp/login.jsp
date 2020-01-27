@@ -54,7 +54,5 @@
 
             %>
         </main>
-        <jsp:getProperty name="loginRequest" property="password"/>
-        <jsp:getProperty name="loginRequest" property="name"/>
     </body>
 </html>

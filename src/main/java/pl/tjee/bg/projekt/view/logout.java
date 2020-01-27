@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import pl.tjee.bg.projekt.controller.UserSessionBean;
+import pl.tjee.bg.projekt.controller.account.AccountAccess_Service;
 
 /**
  *
@@ -35,7 +36,7 @@ public class logout extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         UserSessionBean usb = (UserSessionBean) request.getSession().getAttribute("userSession");
         if(usb != null) {
-//            AccountAccess aa
+        new AccountAccess_Service().getAccountAccessPort().logout(usb.getSessionId());
         }
         request.getSession().invalidate();
         response.sendRedirect(".");

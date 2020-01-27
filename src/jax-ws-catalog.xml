@@ -2,4 +2,6 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:8080/Projekt/FileAccess?WSDL" uri="wsdl/localhost_8080/Projekt/FileAccess.wsdl"/>
     <system systemId="http://localhost:8080/Projekt/FileAccess?xsd=1" uri="wsdl/localhost_8080/Projekt/FileAccess.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/Projekt/AccountAccess?WSDL" uri="wsdl/localhost_8080/Projekt/AccountAccess.wsdl"/>
+    <system systemId="http://localhost:8080/Projekt/AccountAccess?xsd=1" uri="wsdl/localhost_8080/Projekt/AccountAccess.xsd_1.xsd"/>
 </catalog>
