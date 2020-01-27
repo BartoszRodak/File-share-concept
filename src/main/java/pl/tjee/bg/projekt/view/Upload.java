@@ -44,7 +44,6 @@ public class Upload extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -86,7 +85,7 @@ public class Upload extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
-        String uploaderId = request.getParameter("userID");
+        String uploaderId = request.getParameter("userid");
         String desc = request.getParameter("desc");
         Part filePart = request.getPart("file");
         InputStream fileContent = filePart.getInputStream();
@@ -94,7 +93,7 @@ public class Upload extends HttpServlet {
         fileContent.read(data);
 
         FileAccess fa = new FileAccess_Service().getFileAccessPort();
-        fa.upload(null, filePart.getSubmittedFileName(), filePart.getContentType(), data, desc);
+        fa.upload(uploaderId, filePart.getSubmittedFileName(), filePart.getContentType(), data, desc);
 
         response.sendRedirect(request.getContextPath() + "/FileList");
 

@@ -91,11 +91,11 @@ public class FileList extends HttpServlet {
             for (FileListEntry f : files) {
                 out.println("<li>");
 //            name
-                out.println("<div>");
+                out.println("<div class='file-name'>");
                 out.println(f.getName());
                 out.println("</div>");
 //            author
-                out.println("<div>");
+                out.println("<div class='author-name'>");
                 out.println(f.getAuthor() == null ? "" : f.getAuthor());
                 out.println("</div>");
 //            expand
@@ -103,7 +103,6 @@ public class FileList extends HttpServlet {
                 out.println("<summary>Opis</summary>");
 //            action
                 out.println("<form method='post' action=''>");
-                out.println("<input type='hidden' name='hidden' value='Testźż'/>"); //TODO remove + chech 
                 out.println("<input type='hidden' name='file' value='" + f.getId() + "'/>");
                 out.println("<input type='hidden' name='userid' value='" + sessionId + "'/>");
                 out.println("<input type='submit' name='action' value='Pobierz'/>");

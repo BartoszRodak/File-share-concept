@@ -17,7 +17,7 @@ public class LoginRequestBean {
     String name;
     String password;
     String id = null;
-    String message = "";
+    String message = "Błąd logowania! Sprawdź login i hasło";
 
     public String getName() {
         return name;

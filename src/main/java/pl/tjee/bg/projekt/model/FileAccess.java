@@ -22,8 +22,9 @@ public class FileAccess {
 
     /**
      * This is a sample web service operation
+     *
      * @param txt
-     * @return 
+     * @return
      */
     @WebMethod(operationName = "hello")
     public String hello(@WebParam(name = "name") String txt) {
@@ -42,12 +43,22 @@ public class FileAccess {
     @WebMethod
     public boolean upload(String userSessionId, String fileName, String fileType, byte[] fileData, String description) {
         File file = new File();
+        Transaction transaction = null;
+        List<Account> accounts = new ArrayList<>();
+
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            accounts = session.createQuery("from Account where sessionId = :userSessionId", Account.class).setParameter("userSessionId", userSessionId).list();
+        } catch (Exception ignored) {
+        }
+
+        if(accounts.size() != 1)
+            return false;
+        
         file.setContent(fileData);
         file.setDescription(description);
         file.setType(fileType);
         file.setName(fileName);
-//        file.setAuthor(null);
-        Transaction transaction = null;
+        file.setAuthor(accounts.get(0));
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             session.save(file);
@@ -74,7 +85,7 @@ public class FileAccess {
             }
         }
         List<FileListEntry> result = new ArrayList<>();
-        files.forEach(f -> result.add(new FileListEntry(null, f.getId(), f.getName(), f.getDescription())));
+        files.forEach(f -> result.add(new FileListEntry(f.getAuthor().getName(), f.getId(), f.getName(), f.getDescription())));
         return result.toArray(new FileListEntry[result.size()]);
     }
 

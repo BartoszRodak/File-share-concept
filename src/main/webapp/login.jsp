@@ -15,7 +15,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Logowanie</title>
         <link rel="stylesheet" href="css/style.css"/>
     </head>
     <body>
@@ -48,7 +48,7 @@
                         session.setAttribute("userSession", usb);
                         response.sendRedirect(".");
                     } else {
-//TODO Error message
+                        out.println("<div class=\"error\">"+lrb.getMessage()+"</div>");
                     }
                 }
 

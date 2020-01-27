@@ -54,6 +54,18 @@ li:nth-child(odd) {
     background: #999
 }
 
+li > div {
+    display: inline-block;
+    overflow: hidden;
+}
+
+.file-name {
+    width: 59%
+}
+.author-name {
+    width: 39%;
+    text-align: right;
+}
 li details p{
     margin-top: 5px;
     margin-bottom: 5px;
