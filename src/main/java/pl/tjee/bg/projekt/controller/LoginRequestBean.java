@@ -10,6 +10,7 @@ package pl.tjee.bg.projekt.controller;
  * @author Bartem
  */
 public class LoginRequestBean {
+
     String name;
     String password;
     String id = null;
@@ -30,15 +31,18 @@ public class LoginRequestBean {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    public boolean getStatus(){
+
+    public boolean getStatus() {
+        System.out.println("log: " + name);
+        System.out.println("log: " + password);
         return true;
     }
-    
-    public String getMessage(){
+
+    public String getMessage() {
         return this.message;
     }
-    public String getId(){
+
+    public String getId() {
         return this.id;
     }
 }

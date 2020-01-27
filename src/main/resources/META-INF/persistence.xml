@@ -3,13 +3,13 @@
   <!-- Define Persistence Unit -->
   <persistence-unit name="persistence_unit">
     <class>pl.tjee.bg.projekt.model.File</class>
-    <class>pl.tjee.bg.projekt.model.User</class>
+    <class>pl.tjee.bg.projekt.model.Account</class>
     <properties>
-        <property name="eclipselink.logging.level" value="FINE"/>
-        <property name="eclipselink.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>  
-        <property name="eclipselink.jdbc.url" value="jdbc:derby://localhost:1527/projekt;create=true"/> 
-        <property name="eclipselink.jdbc.password" value="projekt123"/> 
-        <property name="eclipselink.jdbc.user" value="projekt123"/> 
+      <property name="eclipselink.logging.level" value="FINE"/>
+      <property name="eclipselink.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+      <property name="eclipselink.jdbc.url" value="jdbc:derby://localhost:1527/projekt;create=true"/>
+      <property name="eclipselink.jdbc.password" value="projekt123"/>
+      <property name="eclipselink.jdbc.user" value="projekt123"/>
     </properties>
   </persistence-unit>
 </persistence>

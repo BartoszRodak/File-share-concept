@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import pl.tjee.bg.projekt.controller.UserSessionBean;
 import pl.tjee.bg.projekt.controller.file.FileAccess;
 import pl.tjee.bg.projekt.controller.file.FileAccess_Service;
 import pl.tjee.bg.projekt.controller.file.FileDownload;
@@ -52,6 +53,19 @@ public class FileList extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<main>");
+
+            out.println("<nav>");
+            if (request.getSession().getAttribute("userSession") != null) {
+                UserSessionBean usb = (UserSessionBean) request.getSession().getAttribute("userSession");
+
+                out.println("<a class='nav-link' href='logout'>Wyloguj</a>");
+                out.println("<span class='nav-link'> | " + usb.getName() + "</span>");
+
+            } else {
+                out.println("<a class='nav-link' href='login.jsp'>Zaloguj</a>");
+            }
+            out.println("</nav>");
+
 //        upload
             if (true) {
 

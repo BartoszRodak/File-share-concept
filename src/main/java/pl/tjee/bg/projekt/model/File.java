@@ -30,7 +30,7 @@ public class File implements Serializable {
     private String name;
     private String description;
     @ManyToOne
-    private User author;
+    private Account author;
     @Column(length=1000000)
     private byte[] content;
     private String type;
@@ -68,11 +68,11 @@ public class File implements Serializable {
         this.description = description;
     }
 
-    public User getAuthor() {
+    public Account getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(Account author) {
         this.author = author;
     }
     

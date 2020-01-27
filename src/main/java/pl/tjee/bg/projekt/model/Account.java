@@ -16,7 +16,7 @@ import javax.persistence.Id;
  * @author Bartem
  */
 @Entity
-public class User implements Serializable {
+public class Account implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -25,7 +25,16 @@ public class User implements Serializable {
     private String pass;
     private String passExtra;
     private String name;
+    private String sessionId;
 
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
+    }
+    
     public String getPass() {
         return pass;
     }
@@ -69,10 +78,10 @@ public class User implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
+        if (!(object instanceof Account)) {
             return false;
         }
-        User other = (User) object;
+        Account other = (Account) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
