@@ -1,0 +1,79 @@
+html {
+    background-image: url("../img/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+}
+
+main{
+    margin: 50px auto;
+    padding: 20px;
+    width: 600px;
+    border: 1px;
+    background-color: gray;
+    text-align: center;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+#upload-container input:not([type="submit"]), #upload-container label, #upload-container textarea{
+    width: 100%;
+    text-align: left;
+}
+#upload-container textarea{
+    resize: vertical;
+    background-color: lightgrey;
+}
+#upload-container label {
+    display: block;
+    margin-top: 10px;
+}
+
+main > span {
+    display: inline-block;
+    width: 5em;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+li{
+    text-align: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 1px;
+}
+
+li:nth-child(even) {
+    background: #CCC
+}
+
+li:nth-child(odd) {
+    background: #999
+}
+
+li details p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+li form {
+    text-align: center;
+}
+.button {
+    padding: 10px 20px;
+    margin: 10px 20px;
+}
+
+.error {
+    color: darkred;
+}
+
+nav {
+    text-align: left;
+}
+.nav-link {
+    position: relative;
+    color: black;
+}
